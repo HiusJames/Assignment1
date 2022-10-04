@@ -40,10 +40,10 @@ public class AllSorts {
         int i = 0, j = 0;
 
         for (i = 0; i < low; i++) {  //gets elements into left subarray
-            L[i] = Shape[left + 1];
+            L[i] = arr[left + 1];
         }
         for (j = 0; j < high; j++) { //gets elements into right subbarray
-            R[j] = Shape[middle + 1 + j];
+            R[j] = arr[middle + 1 + j];
         }
         int k = left;  //strarting index for sort
         i = 0;  //reset loop variables before merge
@@ -51,31 +51,31 @@ public class AllSorts {
 
         while (i < low && j < high) {  //mergre left and right subarrays
             if (L[i] <= R[j]) {
-                Shape[k] = L[i];
+                arr[k] = L[i];
                 i++;
             } else {
-                Shape[k] = R[j];
+                arr[k] = R[j];
                 j++;
             }
             k++;
         }
         while (i < low) { //merge remaining elements from left sub arr
-            Shape[k] = R[j];
+            arr[k] = R[j];
             j++;
             k++;
         }
 
     }
 
-    void MergeSort(int Shape[], int left, int right) { //helper function creates sorting sub cases
+    void MergeSort(Shape arr[], int left, int right) { //helper function creates sorting sub cases
         int middle;
         if (left < right) { //only sort if the left index is less than right
             middle = (left + right) / 2;
 
-            MergeSort(Shape, left, middle);  //left subarray
-            MergeSort(Shape, middle + 1, right);  //right subarray
+            MergeSort(arr, left, middle);  //left subarray
+            MergeSort(arr, middle + 1, right);  //right subarray
 
-            Merge(Shape, left, middle, right);  //merge the two arrays
+            Merge(arr, left, middle, right);  //merge the two arrays
         }
     }
 
