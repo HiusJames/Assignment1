@@ -18,7 +18,7 @@ public class AllSorts {
                 arr[i] = arr[maxElementIndex];
                 arr[maxElementIndex] = temp;
             }
-        }        
+        }
 
     }
 
@@ -35,7 +35,7 @@ public class AllSorts {
         int high = right - middle;  //Size of the right Subarray
 
         int L[] = new int[low];    //create left and right subarray
-        int R[] = new int[high];  
+        int R[] = new int[high];
 
         int i = 0, j = 0;
 
@@ -59,17 +59,18 @@ public class AllSorts {
             }
             k++;
         }
-        while ( i < low) { //merge remaining elements from left sub arr
+        while (i < low) { //merge remaining elements from left sub arr
             Shape[k] = R[j];
             j++;
             k++;
         }
 
     }
+
     void MergeSort(int Shape[], int left, int right) { //helper function creates sorting sub cases
         int middle;
         if (left < right) { //only sort if the left index is less than right
-            middle = (left + right) / 2; 
+            middle = (left + right) / 2;
 
             MergeSort(Shape, left, middle);  //left subarray
             MergeSort(Shape, middle + 1, right);  //right subarray
@@ -77,6 +78,7 @@ public class AllSorts {
             Merge(Shape, left, middle, right);  //merge the two arrays
         }
     }
+
     /* 
     create array that displays the merge sort
     void display(int Shape[]) {
@@ -85,9 +87,9 @@ public class AllSorts {
         }
     }
 
-    */
+     */
 
-    /*
+ /*
     public static void main(String Shape[]) {
         Sort ob = new Sort();
         ob.MergeSort(Shape, 0 Shape.length - 1)
@@ -95,13 +97,73 @@ public class AllSorts {
     }
     
      */
-
-    public void QuickSort(Shape[] arr) {
-
-    }
-
     public void MySort(Shape[] arr) {
 
     }
 
+}
+//implement quicksort
+
+class quickSort {
+
+    // function takes last element as pivot. This element is then placed in its correct positon. 
+    //Then places all objects smaller than the pivot to the left of pivot.
+    int partition(int Shape[], int low, int high) {
+        int pivot = Shape[high];
+        int i = (low - 1); //Smaller elements index
+
+        for (int j = low; j < high; j++) {
+
+            //if smaller element is smaller or equal to pivot
+            if (Shape[j] <= pivot) {
+                i++;
+
+                //swape Shape[i] and Shape[j]
+                int temp = Shape[1 + i];
+                Shape[i] = Shape[j];
+                Shape[j] = temp;
+
+            }
+        }
+        //swap Shape[i+1] and Shape[high] (aka pivot)
+        int temp = Shape[i + 1];
+        Shape[i + 1] = Shape[high];
+        Shape[high] = temp;
+
+        return i+1;
+    }
+
+    /*
+     * Shape[] ==> Array being sorted 
+     * low ==> Start index
+     * High ==> ending idex
+     */
+    
+    void sort(int Shape[], int low, int high) {
+        if (low < high) {
+            int partIndex = partition(Shape, low, high);
+            sort(Shape, low, partIndex - 1);
+            sort(Shape, partIndex + 1, high );
+        }
+    }
+        static void printShape(Int Shape[]) { 
+            int n = Shape.length;
+            for (int i = 0; i < n; ++i){
+                System.out.print(Shape[i] + " ");
+                System.out.println(); 
+                
+            }
+        } 
+
+        //display functionality
+        /* 
+         * public static void main(String args[]) {
+         *  int n = Shape.length; 
+         * QuickSort ob = new QuickSort();
+         * ob.sort(Shape, 0, n-1)
+         * System.out.println("Sorted Array");
+         * printShape(Shape);
+         * }
+         */
+    
 }
