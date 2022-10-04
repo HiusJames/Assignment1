@@ -16,7 +16,7 @@ public class AllSorts {
             if (maxElementIndex != i) {
                 int temp = arr[i];
                 arr[i] = arr[maxElementIndex];
-                arr[maxElementIndex] = temp;
+                arr[maxElementIndex] = temp; //sssssssssssssssssssssssssssssssss
             }
         }
 
