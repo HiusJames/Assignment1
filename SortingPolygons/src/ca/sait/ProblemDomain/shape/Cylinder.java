@@ -1,17 +1,15 @@
-package ca.sait.ProblemDomain;
+package ca.sait.ProblemDomain.shape;
 
-public class Cylinder {
-    private double height;
+import ca.sait.ProblemDomain.*;
+
+public class Cylinder extends Shape {
     private double radius;
-    private double base;
-    private double volume;
 
     public Cylinder() {
 
     }
 
     public Cylinder(double height, double radius) {
-        this.height = height;
         this.radius = radius;
     }
 
@@ -31,14 +29,18 @@ public class Cylinder {
         this.radius = radius;
     }
 
-    public double calcBase(double radius) {
-        base = radius * radius * Math.PI;
-
-        return base;
+    @Override
+    public double calcBaseArea() {
+        return radius * radius * Math.PI;
     }
-    public double calcVolume(double height, double base) {
-        volume = base * height;
-        return volume;
+    @Override
+    public double calcVol() {
+       return radius * radius * Math.PI * height;
+    }
+
+    @Override
+    public String toString() {
+        return "Cone [radius=" + radius + "]";
     }
     
 }
