@@ -17,6 +17,7 @@ public class AllSorts {
                 int temp = arr[i];
                 arr[i] = arr[maxElementIndex];
                 arr[maxElementIndex] = temp; //sssssssssssssssssssssssssssssssss
+                if(true){System.out.println("live");}
             }
         }
 
