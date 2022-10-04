@@ -3,7 +3,7 @@ package ca.sait.Manager;
 import ca.sait.ProblemDomain.*;
 
 public class AllSorts {
-
+    
     public void SelectionSort(Shape[] arr) {
         for (int i = 0; i < arr.length - 1; i++) {
             int maxElementIndex = i;
@@ -30,12 +30,12 @@ public class AllSorts {
 
     }
 
-    public void Merge(int Shape[], int left, int middle, int right) {
+    public void Merge(Shape arr[], int left, int middle, int right) {
         int low = middle - left + 1; //size of the left Subarray
         int high = right - middle;  //Size of the right Subarray
 
-        int L[] = new int[low];    //create left and right subarray
-        int R[] = new int[high];
+        Shape L[] = new Shape[low];    //create left and right subarray
+        Shape R[] = new Shape[high];
 
         int i = 0, j = 0;
 
