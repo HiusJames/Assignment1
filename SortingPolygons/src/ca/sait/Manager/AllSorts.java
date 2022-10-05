@@ -3,6 +3,7 @@ package ca.sait.Manager;
 import ca.sait.ProblemDomain.*;
 
 public class AllSorts {
+
     protected String type;
 
     public void AllSorts(String type) {
@@ -15,18 +16,21 @@ public class AllSorts {
             for (int j = i + 1; j < arr.length; j++) {
                 switch (type) {
                     case "h":
-                        if (arr[maxElementIndex].compareTo(arr[j]) < 0)
+                        if (arr[maxElementIndex].compareTo(arr[j]) < 0) {
                             maxElementIndex = j;
+                        }
                         break;
                     case "b":
                         BaseAreacomp base = new BaseAreacomp();
-                        if (base.compare(arr[maxElementIndex], arr[j]) < 0)
+                        if (base.compare(arr[maxElementIndex], arr[j]) < 0) {
                             maxElementIndex = j;
+                        }
                         break;
                     case "v":
                         Volumecomp vol = new Volumecomp();
-                        if (vol.compare(arr[maxElementIndex], arr[j]) < 0)
+                        if (vol.compare(arr[maxElementIndex], arr[j]) < 0) {
                             maxElementIndex = j;
+                        }
                         break;
                 }
 
@@ -118,7 +122,7 @@ public class AllSorts {
                     }
                     break;
                 case "v":
-                    Volumecomp vol = new Volumecomp();
+                    Volumecomp vol = new Volumecomp(); //same throughout, implement the if condition for quicksort
                     if (vol.compare(L[i], R[j]) < 0) {
                         arr[k] = L[i];
                         i++;
@@ -174,8 +178,73 @@ public class AllSorts {
      * }
      * 
      */
-    public void QuickSort(Shape[] arr) {
 
+ /*  
+    public void QuickSort(Shape arr[]) {
+        int begin = 0;
+        int end = 0;
+        if (low < high) {
+
+        }
+    }
+     */
+    public void QuickSort(Shape arr[]) {
+        int begin = 0;
+        int end = 0;
+        if (begin < end) {
+
+            int partIndex = PartitionQui(arr, begin, end);
+
+            quickSort(arr, begin, partIndex - 1);
+            quickSort(arr, partIndex + 1, end);
+        }
+
+    }
+
+    private int Partition(Shape arr[], begin, end) {
+        int begin = 0;
+        int end = 0;
+        Shape piv = arr[end];
+        int i = (begin - 1);
+
+        switch (type) {
+            case "h":
+                for (int j = begin; j < end; j++) {
+                    if (arr[j].compareTo(piv) < 0) {
+                        i++;
+                        Shape swapTemp = arr[i];
+                        arr[j] = swapTemp;
+                    }
+                }
+
+                break;
+            case "b":
+                for (int j = begin; j < end; j++) {
+                    BaseAreacomp base = new BaseAreacomp();
+                    if (base.compare(arr[j], (piv)) < 0) {
+                        i++;
+                        swapTemp = arr[j];
+                        arr[j] = swapTemp;
+                    }
+                }
+                break;
+            case "v":
+                for (int j = begin; j < end; j++) {
+                    if (vol.compare(arr[j], (piv)) < 0) {
+                        Volumecomp vol = new Volumecomp();
+                        i++;
+                        Shape swapTemp = arr[i];
+                        arr[j] = swapTemp;
+
+                    }
+                }
+                break;
+
+        }
+        Shape swapTemp = arr[i + 1];
+        arr[i + 1] = arr[end];
+        arr[end] = swapTemp;
+        return i + 1;
     }
 
     public void MySort(Shape[] arr) {
