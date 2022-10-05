@@ -4,7 +4,8 @@ import ca.sait.ProblemDomain.*;
 
 public class AllSorts {
     protected String type;
-
+    BaseAreacomp base = new BaseAreacomp();
+    Volumecomp vol = new Volumecomp();
     public void AllSorts(String type) {
         this.type = type;
     }
@@ -19,12 +20,11 @@ public class AllSorts {
                             maxElementIndex = j;
                         break;
                     case "b":
-                        BaseAreacomp base = new BaseAreacomp();
+                
                         if (base.compare(arr[maxElementIndex], arr[j]) < 0)
                             maxElementIndex = j;
                         break;
                     case "v":
-                        Volumecomp vol = new Volumecomp();
                         if (vol.compare(arr[maxElementIndex], arr[j]) < 0)
                             maxElementIndex = j;
                         break;
@@ -54,7 +54,7 @@ public class AllSorts {
                         }
                         break;
                     case "b":
-                        BaseAreacomp base = new BaseAreacomp();
+                
                         if (base.compare(arr[j], arr[j + 1]) > 0) {
                             Shape temp = arr[j];
                             arr[j] = arr[j + 1];
@@ -62,7 +62,6 @@ public class AllSorts {
                         }
                         break;
                     case "v":
-                        Volumecomp vol = new Volumecomp();
                         if (vol.compare(arr[j], arr[j + 1]) > 0) {
                             Shape temp = arr[j];
                             arr[j] = arr[j + 1];
@@ -89,7 +88,7 @@ public class AllSorts {
                     }
                     break;
                 case "b":
-                    BaseAreacomp base = new BaseAreacomp();
+            
                     while ((j >= 0) && (base.compare(arr[j], current) < 0)) {
                         arr[j - 1] = arr[j];
                         j++;
@@ -97,7 +96,6 @@ public class AllSorts {
 
                     break;
                 case "v":
-                    Volumecomp vol = new Volumecomp();
                     while ((j >= 0) && (vol.compare(arr[j], current) < 0)) {
                         arr[j - 1] = arr[j];
                         j++;
@@ -108,7 +106,7 @@ public class AllSorts {
         }
     }
 
-    public void Merge(Shape arr[], int left, int middle, int right) {
+    void Merge(Shape arr[], int left, int middle, int right) {
         int low = middle - left + 1; // size of the left Subarray
         int high = right - middle; // Size of the right Subarray
 
@@ -139,7 +137,7 @@ public class AllSorts {
                     }
                     break;
                 case "b":
-                    BaseAreacomp base = new BaseAreacomp();
+            
                     if (base.compare(L[i], R[j]) < 0) {
                         arr[k] = L[i];
                         i++;
@@ -149,7 +147,6 @@ public class AllSorts {
                     }
                     break;
                 case "v":
-                    Volumecomp vol = new Volumecomp();
                     if (vol.compare(L[i], R[j]) < 0) {
                         arr[k] = L[i];
                         i++;
@@ -161,13 +158,7 @@ public class AllSorts {
                     break;
 
             }
-            // if (L[i] <= R[j]) {
-            // arr[k] = L[i];
-            // i++;
-            // } else {
-            // arr[k] = R[j];
-            // j++;
-            // }
+
             k++;
         }
         while (i < low) { // merge remaining elements from left sub arr
@@ -178,7 +169,7 @@ public class AllSorts {
 
     }
 
-    void MergeSort(Shape arr[], int left, int right) { // helper function creates sorting sub cases
+    public void MergeSort(Shape arr[], int left, int right) { // helper function creates sorting sub cases
         int middle;
         if (left < right) { // only sort if the left index is less than right
             middle = (left + right) / 2;
