@@ -6,7 +6,7 @@ public class AllSorts {
     protected String type;
     BaseAreacomp base = new BaseAreacomp();
     Volumecomp vol = new Volumecomp();
-    public void AllSorts(String type) {
+    public AllSorts(String type) {
         this.type = type;
     }
 
