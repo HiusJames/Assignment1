@@ -201,6 +201,43 @@ public class AllSorts {
     }
 
     public void MySort(Shape[] arr) {
+        int gap = arr.length;
+        double shrink = 1.3;
+        boolean swapped = true;
 
+        while (gap != 1 || swapped == true) {
+            gap = floor(gap / 1.3);
+            if (gap <= 1) {
+                gap = 1;
+            }
+            swapped = false;
+
+            for (int i = 0; i <= arr.length + 1 - gap; i++) {
+                switch (type) {
+                    case "h":
+                    if (arr[i].compareTo(arr[i + gap])) {
+                        int temp = arr[i];
+                        arr[i] = arr[i + gap];
+                        arr[i + gap] = temp;
+                    }
+                        break;
+                    case "a":
+                
+                    if (base.compare(arr[maxElementIndex], arr[j]) < 0) {
+                        int temp = arr[i];
+                        arr[i] = arr[i + gap];
+                        arr[i + gap] = temp;
+                    }
+                        break;
+                    case "v":
+                    if (vol.compare(arr[maxElementIndex], arr[j]) < 0) {
+                        int temp = arr[i];
+                        arr[i] = arr[i + gap];
+                        arr[i + gap] = temp;
+                    }
+                        break;
+                }
+            }
+        }
     }
 }
