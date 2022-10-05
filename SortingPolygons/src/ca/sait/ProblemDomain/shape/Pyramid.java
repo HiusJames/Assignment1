@@ -1,17 +1,15 @@
-package ca.sait.ProblemDomain;
+package ca.sait.ProblemDomain.shape;
 
-public class Pyramid {
-    private double height;
+import ca.sait.ProblemDomain.*;
+
+public class Pyramid extends Shape {
     private double length;
-    private double base;
-    private double volume;
 
     public Pyramid() {
 
     }
 
     public Pyramid(double height, double length) {
-        this.height = height;
         this.length = length;
     }
 
@@ -31,14 +29,18 @@ public class Pyramid {
         this.length = length;
     }
 
-    public double calcBase(double length) {
-        base = length * length;
-        return base;
+    @Override
+    public double calcBaseArea() {
+        return length * length;
+    }
+    @Override
+    public double calcVol() {
+       return length * length * (1/3) * height;
     }
 
-    public double calcVolume(double height, double base) {
-        volume = base * (1/3) * height;
-        
-        return volume;
+    @Override
+    public String toString() {
+        return String.format("Pyramid(length=%.3f height=%.3f)", length, height);
     }
+    
 }
