@@ -1,17 +1,15 @@
-package ca.sait.ProblemDomain;
+package ca.sait.ProblemDomain.shape;
 
-public class Cone {
-    private double height;
+import ca.sait.ProblemDomain.*;
+
+public class Cone extends Shape {
     private double radius;
-    private double base;
-    private double volume;
 
     public Cone() {
 
     }
 
     public Cone(double height, double radius) {
-        this.height = height;
         this.radius = radius;
     }
 
@@ -30,16 +28,19 @@ public class Cone {
     public void setRadius(double radius) {
         this.radius = radius;
     }
+    @Override
+    public double calcBaseArea() {
+        return radius * radius * Math.PI;
+    }
+    @Override
+    public double calcVol() {
+       return radius * radius * Math.PI * (1.0/3.0) * height;
+    }
 
-    public double calcBase(double radius) {
-        base = radius * radius * Math.PI;
-
-        return base;
+    @Override
+    public String toString() {
+        return "Cone [radius=" + radius + "]";
     }
     
-    public double calcVolume(double height, double base) {
-        volume = base * (1/3) * height;
-        
-        return volume;
-    }
 }
+
