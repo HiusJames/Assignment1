@@ -44,11 +44,34 @@ public class AllSorts {
     public void BubbleSort(Shape[] arr) {
         for (int i = 0; i < arr.length - 1; i++) {
             for (int j = 0; j < arr.length - i - 1; j++) {
-            if (arr[j] > arr[j + 1]) {
-                int temp = arr[j];
-                arr[j] = arr[j+1];
-                arr[j+1] = temp;
-            }
+
+                switch (type) {
+                    case "h":
+                        if (arr[j].compareTo(arr[j + 1]) > 0) {
+                            Shape temp = arr[j];
+                            arr[j] = arr[j + 1];
+                            arr[j + 1] = temp;
+                        }
+                        break;
+                    case "b":
+                        BaseAreacomp base = new BaseAreacomp();
+                        if (base.compare(arr[j], arr[j + 1]) > 0) {
+                            Shape temp = arr[j];
+                            arr[j] = arr[j + 1];
+                            arr[j + 1] = temp;
+                        }
+                        break;
+                    case "v":
+                        Volumecomp vol = new Volumecomp();
+                        if (vol.compare(arr[j], arr[j + 1]) > 0) {
+                            Shape temp = arr[j];
+                            arr[j] = arr[j + 1];
+                            arr[j + 1] = temp;
+                        }
+
+                        break;
+                }
+
             }
         }
     }
