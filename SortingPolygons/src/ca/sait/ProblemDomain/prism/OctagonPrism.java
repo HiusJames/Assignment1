@@ -3,6 +3,11 @@ package ca.sait.ProblemDomain.prism;
 import ca.sait.ProblemDomain.*;
 
 public class OctagonPrism extends Prism {
+    public OctagonPrism(double height, double side) {
+        this.side = side;
+        this.height = height;
+    }
+
     @Override
     public double calcBaseArea() {
         return side * side * 2 * (1 + Math.sqrt(2));
@@ -36,7 +41,6 @@ public class OctagonPrism extends Prism {
 
     @Override
     public String toString() {
-        // TODO Auto-generated method stub
-        return super.toString();
+        return String.format("OctagonPrism(side=%.3f height=%.3f)", side, height);
     }
 }

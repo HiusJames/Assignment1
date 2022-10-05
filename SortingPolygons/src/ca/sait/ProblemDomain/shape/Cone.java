@@ -39,7 +39,7 @@ public class Cone extends Shape {
 
     @Override
     public String toString() {
-        return "Cone [radius=" + radius + "]";
+        return String.format("Cone(radius=%.3f height=%.3f)", radius, height);
     }
     
 }
