@@ -40,7 +40,7 @@ public class Pyramid extends Shape {
 
     @Override
     public String toString() {
-        return "Cone [length=" + length + "]";
+        return String.format("Pyramid(length=%.3f height=%.3f)", length, height);
     }
     
 }

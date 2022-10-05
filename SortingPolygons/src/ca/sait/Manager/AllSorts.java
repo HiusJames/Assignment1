@@ -19,7 +19,7 @@ public class AllSorts {
                         if (arr[maxElementIndex].compareTo(arr[j]) < 0)
                             maxElementIndex = j;
                         break;
-                    case "b":
+                    case "a":
                 
                         if (base.compare(arr[maxElementIndex], arr[j]) < 0)
                             maxElementIndex = j;
@@ -53,7 +53,7 @@ public class AllSorts {
                             arr[j + 1] = temp;
                         }
                         break;
-                    case "b":
+                    case "a":
                 
                         if (base.compare(arr[j], arr[j + 1]) > 0) {
                             Shape temp = arr[j];
@@ -87,7 +87,7 @@ public class AllSorts {
                         j++;
                     }
                     break;
-                case "b":
+                case "a":
             
                     while ((j >= 0) && (base.compare(arr[j], current) < 0)) {
                         arr[j - 1] = arr[j];
@@ -136,7 +136,7 @@ public class AllSorts {
                         j++;
                     }
                     break;
-                case "b":
+                case "a":
             
                     if (base.compare(L[i], R[j]) < 0) {
                         arr[k] = L[i];

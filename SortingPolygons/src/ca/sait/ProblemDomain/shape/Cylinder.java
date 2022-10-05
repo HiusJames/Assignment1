@@ -40,7 +40,7 @@ public class Cylinder extends Shape {
 
     @Override
     public String toString() {
-        return "Cone [radius=" + radius + "]";
+        return String.format("Cylinder(radius=%.3f height=%.3f)", radius, height);
     }
     
 }
