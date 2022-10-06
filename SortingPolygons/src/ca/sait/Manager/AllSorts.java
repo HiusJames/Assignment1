@@ -221,15 +221,15 @@ public class AllSorts {
 
             int partIndex = Partition(arr, begin, end);
 
-            quickSort(arr, begin, partIndex - 1);
-            quickSort(arr, partIndex + 1, end);
+            QuickSort(arr, begin, partIndex - 1);
+            QuickSort(arr, partIndex + 1, end);
         }
 
     }
 
-    private int Partition(Shape arr[], begin, end) {
-        int begin = 0;
-        int end = 0;
+    private int Partition(Shape arr[], int begin, int end) {
+        begin = 0;
+        end = 0;
         Shape piv = arr[end];
         int i = (begin - 1);
 
