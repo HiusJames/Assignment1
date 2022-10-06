@@ -77,12 +77,12 @@ public class AllSorts {
 
     public void InsertionSort(Shape[] arr) {
 
-        for (int i = 0; i < arr.length; i++) {
+        for (int i = 0; i < arr.length-2; i++) {
             Shape current = arr[i];
             int j = i + 1;
             switch (type) {
                 case "h":
-                    while ((j >= 0) && (arr[j]).compareTo(current) > 0) {
+                    while ((j >= 0) && (arr[j]).compareTo(current) < 0) {
                         arr[j - 1] = arr[j];
                         j++;
                     }
@@ -201,43 +201,43 @@ public class AllSorts {
     }
 
     public void MySort(Shape[] arr) {
-        int gap = arr.length;
-        double shrink = 1.3;
-        boolean swapped = true;
-
-        while (gap != 1 || swapped == true) {
-            gap = floor(gap / 1.3);
-            if (gap <= 1) {
-                gap = 1;
-            }
-            swapped = false;
-
-            for (int i = 0; i <= arr.length + 1 - gap; i++) {
-                switch (type) {
-                    case "h":
-                    if (arr[i].compareTo(arr[i + gap])) {
-                        int temp = arr[i];
-                        arr[i] = arr[i + gap];
-                        arr[i + gap] = temp;
-                    }
-                        break;
-                    case "a":
-                
-                    if (base.compare(arr[maxElementIndex], arr[j]) < 0) {
-                        int temp = arr[i];
-                        arr[i] = arr[i + gap];
-                        arr[i + gap] = temp;
-                    }
-                        break;
-                    case "v":
-                    if (vol.compare(arr[maxElementIndex], arr[j]) < 0) {
-                        int temp = arr[i];
-                        arr[i] = arr[i + gap];
-                        arr[i + gap] = temp;
-                    }
-                        break;
-                }
-            }
-        }
+//        int gap = arr.length;
+//        double shrink = 1.3;
+//        boolean swapped = true;
+//
+//        while (gap != 1 || swapped == true) {
+//            gap = floor(gap / 1.3);
+//            if (gap <= 1) {
+//                gap = 1;
+//            }
+//            swapped = false;
+//
+//            for (int i = 0; i <= arr.length + 1 - gap; i++) {
+//                switch (type) {
+//                    case "h":
+//                    if (arr[i].compareTo(arr[i + gap])) {
+//                        int temp = arr[i];
+//                        arr[i] = arr[i + gap];
+//                        arr[i + gap] = temp;
+//                    }
+//                        break;
+//                    case "a":
+//                
+//                    if (base.compare(arr[maxElementIndex], arr[j]) < 0) {
+//                        int temp = arr[i];
+//                        arr[i] = arr[i + gap];
+//                        arr[i + gap] = temp;
+//                    }
+//                        break;
+//                    case "v":
+//                    if (vol.compare(arr[maxElementIndex], arr[j]) < 0) {
+//                        int temp = arr[i];
+//                        arr[i] = arr[i + gap];
+//                        arr[i + gap] = temp;
+//                    }
+//                        break;
+//                }
+//            }
+//        }
     }
 }

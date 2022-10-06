@@ -106,13 +106,13 @@ public class SortingPolygons {
         for(int i = 0; i < shapes.length; i++) {
             switch(type) {
                 case "h":
-                System.out.println(shapes[i].getHeight() + " " + shapes[i].toString());
+                System.out.printf("%.3f %s",shapes[i].getHeight(), shapes[i].toString());
                 break;
                 case "a":
-                System.out.println(shapes[i].calcBaseArea() + " " + shapes[i].toString());
+                    System.out.printf("%.3f %s",shapes[i].calcBaseArea(), shapes[i].toString());
                 break;
                 case "v":
-                System.out.println(shapes[i].calcVol() + " " + shapes[i].toString());
+                    System.out.printf("%.3f %s",shapes[i].calcVol(), shapes[i].toString());
                 break;
 
             }
