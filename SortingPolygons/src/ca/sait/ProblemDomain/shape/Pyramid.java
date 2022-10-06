@@ -11,6 +11,8 @@ public class Pyramid extends Shape {
 
     public Pyramid(double height, double length) {
         this.length = length;
+        this.height = height;
+
     }
 
     public double getHeight() {

@@ -3,7 +3,8 @@ package ca.sait.Manager;
 import ca.sait.ProblemDomain.*;
 
 public class AllSorts {
-    protected String type;
+    public String type;
+    private boolean swapped;
     BaseAreacomp base = new BaseAreacomp();
     Volumecomp vol = new Volumecomp();
     public AllSorts(String type) {
@@ -13,7 +14,7 @@ public class AllSorts {
     public void SelectionSort(Shape[] arr) {
         for (int i = 0; i < arr.length - 1; i++) {
             int maxElementIndex = i;
-            for (int j = i + 1; j < arr.length; j++) {
+            for (int j = i + 1; j < arr.length - 1; j++) {
                 switch (type) {
                     case "h":
                         if (arr[maxElementIndex].compareTo(arr[j]) < 0)
@@ -44,13 +45,14 @@ public class AllSorts {
     public void BubbleSort(Shape[] arr) {
         for (int i = 0; i < arr.length - 1; i++) {
             for (int j = 0; j < arr.length - i - 1; j++) {
-
+            	swapped = false;
                 switch (type) {
                     case "h":
                         if (arr[j].compareTo(arr[j + 1]) > 0) {
                             Shape temp = arr[j];
                             arr[j] = arr[j + 1];
                             arr[j + 1] = temp;
+                            swapped = true;
                         }
                         break;
                     case "a":
@@ -59,6 +61,7 @@ public class AllSorts {
                             Shape temp = arr[j];
                             arr[j] = arr[j + 1];
                             arr[j + 1] = temp;
+                            swapped = true;
                         }
                         break;
                     case "v":
@@ -66,9 +69,13 @@ public class AllSorts {
                             Shape temp = arr[j];
                             arr[j] = arr[j + 1];
                             arr[j + 1] = temp;
+                            swapped = true;
                         }
 
                         break;
+                }
+                if (swapped != true) {
+                	break;
                 }
 
             }
@@ -77,30 +84,36 @@ public class AllSorts {
 
     public void InsertionSort(Shape[] arr) {
 
-        for (int i = 0; i < arr.length-2; i++) {
+        for (int i = 1; i < arr.length; i++) {
             Shape current = arr[i];
-            int j = i + 1;
+            int j = i - 1;
             switch (type) {
                 case "h":
-                    while ((j >= 0) && (arr[j]).compareTo(current) < 0) {
-                        arr[j - 1] = arr[j];
-                        j++;
+                    while ((j >= 0) && (arr[j]).compareTo(current) > 0) {
+                        arr[j + 1] = arr[j];
+                        j--;
+                        swapped = true;
                     }
                     break;
                 case "a":
             
                     while ((j >= 0) && (base.compare(arr[j], current) < 0)) {
-                        arr[j - 1] = arr[j];
-                        j++;
+                    	arr[j + 1] = arr[j];
+                        j--;
+                        swapped = true;
                     }
 
                     break;
                 case "v":
                     while ((j >= 0) && (vol.compare(arr[j], current) < 0)) {
-                        arr[j - 1] = arr[j];
-                        j++;
+                    	arr[j + 1] = arr[j];
+                        j--;
+                        swapped = true;
                     }
                     break;
+            }
+            if (swapped == false) {
+            	break;
             }
             arr[j - 1] = current;
         }
