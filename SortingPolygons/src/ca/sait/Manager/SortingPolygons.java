@@ -27,8 +27,7 @@ public class SortingPolygons {
     }
 
     public void LoadPolygons() throws IOException{
-        Scanner in = new Scanner(new File(filepath));
-        
+        Scanner in = new Scanner(new File("res\\polyfor1.txt"));
         String line = in.nextLine();
         String[] fields = line.split(" ");
         int amount = Integer.parseInt(fields[0]);
@@ -37,25 +36,25 @@ public class SortingPolygons {
             String name = fields[3*i-2];
             switch (name){
                 case "Cylinder":
-                    shapes[i-1] = (new Cylinder(Integer.parseInt(fields[3*i-1]), Integer.parseInt(fields[3*i]))); 
+                    shapes[i-1] = (new Cylinder(Double.parseDouble(fields[3*i-1]), Double.parseDouble(fields[3*i]))); 
                 break;
                 case "Cone":
-                    shapes[i-1] = (new Cone(Integer.parseInt(fields[3*i-1]), Integer.parseInt(fields[3*i]))); 
+                    shapes[i-1] = (new Cone(Double.parseDouble(fields[3*i-1]), Double.parseDouble(fields[3*i]))); 
                 break;
                 case "Pyramid":
-                    shapes[i-1] = (new Pyramid(Integer.parseInt(fields[3*i-1]), Integer.parseInt(fields[3*i])));
+                    shapes[i-1] = (new Pyramid(Double.parseDouble(fields[3*i-1]), Double.parseDouble(fields[3*i])));
                 break;
                 case "SquarePrism":
-                    shapes[i-1] = (new SquarePrism(Integer.parseInt(fields[3*i-1]), Integer.parseInt(fields[3*i])));
+                    shapes[i-1] = (new SquarePrism(Double.parseDouble(fields[3*i-1]), Double.parseDouble(fields[3*i])));
                 break;
                 case "TriangularPrism":
-                    shapes[i-1] = (new TrianglePrism(Integer.parseInt(fields[3*i-1]), Integer.parseInt(fields[3*i])));
+                    shapes[i-1] = (new TrianglePrism(Double.parseDouble(fields[3*i-1]), Double.parseDouble(fields[3*i])));
                 break;
                 case "PentagonalPrism":
-                    shapes[i-1] = (new PentagonPrism(Integer.parseInt(fields[3*i-1]), Integer.parseInt(fields[3*i])));  
+                    shapes[i-1] = (new PentagonPrism(Double.parseDouble(fields[3*i-1]), Double.parseDouble(fields[3*i])));  
                 break;
                 case "OctagonalPrism":
-                    shapes[i-1] = (new OctagonPrism(Integer.parseInt(fields[3*i-1]), Integer.parseInt(fields[3*i])));
+                    shapes[i-1] = (new OctagonPrism(Double.parseDouble(fields[3*i-1]), Double.parseDouble(fields[3*i])));
                 break;
             }
             
@@ -63,6 +62,7 @@ public class SortingPolygons {
     }
 
     public void SortPolygons() {
+
         AllSorts s = new AllSorts(type);
         System.out.print("Sort method: ");
         switch(sort){
@@ -103,7 +103,7 @@ public class SortingPolygons {
             System.out.println("Volume");
             break;
         }
-        for(int i = 0; i < shapes.length; i++) {
+        for(int i = 0; i < shapes.length - 1; i++) {
             switch(type) {
                 case "h":
                 System.out.println(shapes[i].getHeight() + " " + shapes[i].toString());
@@ -114,7 +114,6 @@ public class SortingPolygons {
                 case "v":
                 System.out.println(shapes[i].calcVol() + " " + shapes[i].toString());
                 break;
-
             }
         }
     }

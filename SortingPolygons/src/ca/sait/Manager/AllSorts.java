@@ -176,8 +176,6 @@ public class AllSorts {
      */
     public void QuickSort(Shape[] arr) {
 
-<<<<<<< Updated upstream
-=======
  /*  
     public void QuickSort(Shape arr[]) {
         int begin = 0;
@@ -244,7 +242,6 @@ public class AllSorts {
         arr[i + 1] = arr[end];
         arr[end] = swapTemp;
         return i + 1;
->>>>>>> Stashed changes
     }
 
     public void MySort(Shape[] arr) {

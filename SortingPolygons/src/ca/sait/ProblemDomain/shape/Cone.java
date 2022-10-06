@@ -1,5 +1,6 @@
 package ca.sait.ProblemDomain.shape;
 
+import ca.sait.Manager.AllSorts;
 import ca.sait.ProblemDomain.*;
 
 public class Cone extends Shape {
@@ -11,6 +12,7 @@ public class Cone extends Shape {
 
     public Cone(double height, double radius) {
         this.radius = radius;
+        this.height = height;
     }
 
     public double getHeight() {
