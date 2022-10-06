@@ -21,8 +21,6 @@ public class SortingPolygons {
         System.out.println("Application started");
         long startTime = System.currentTimeMillis();
         LoadPolygons();
-//        for (int i = 0; i <shapes.length; i++) {}
-//        System.out.println(shapes[i].compareTo(shapes[i+1]));
         SortPolygons();
         long endTime = System.currentTimeMillis();
         System.out.println(endTime - startTime);
@@ -30,7 +28,6 @@ public class SortingPolygons {
 
     public void LoadPolygons() throws IOException{
         Scanner in = new Scanner(new File("res\\polyfor1.txt"));
-        
         String line = in.nextLine();
         String[] fields = line.split(" ");
         int amount = Integer.parseInt(fields[0]);
@@ -65,32 +62,33 @@ public class SortingPolygons {
     }
 
     public void SortPolygons() {
-        AllSorts sorts = new AllSorts(type);
+
+        AllSorts s = new AllSorts(type);
         System.out.print("Sort method: ");
         switch(sort){
             case "b":
             System.out.println("Bubble Sort");
-            sorts.BubbleSort(shapes);
+            s.BubbleSort(shapes);
             break;
             case "s":
             System.out.println("Selection Sort");
-            sorts.SelectionSort(shapes);
+            s.SelectionSort(shapes);
             break;
             case "i":
             System.out.println("Insertion Sort");
-            sorts.InsertionSort(shapes);
+            s.InsertionSort(shapes);
             break;
             case "m":
             System.out.println("Merge Sort");
-            sorts.MergeSort(shapes, 0, 0);
+            s.MergeSort(shapes, 0, 0);
             break;
             case "q":
             System.out.println("Quick Sort");
-            sorts.QuickSort(shapes);
+            s.QuickSort(shapes);
             break;
             case "z":
             System.out.println("Custom Sort");
-            sorts.MySort(shapes);
+            s.MySort(shapes);
             break;
         }
         System.out.print("Sort by: ");
@@ -116,7 +114,6 @@ public class SortingPolygons {
                 case "v":
                 System.out.println(shapes[i].calcVol() + " " + shapes[i].toString());
                 break;
-                
             }
         }
     }
