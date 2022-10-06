@@ -3,30 +3,28 @@ package ca.sait.Manager;
 import ca.sait.ProblemDomain.*;
 
 public class AllSorts {
-    public String type;
-    private boolean swapped = false;
-    BaseAreacomp base = new BaseAreacomp();
-    Volumecomp vol = new Volumecomp();
+    protected String type;
 
-    public AllSorts(String type) {
+    public void AllSorts(String type) {
         this.type = type;
     }
 
     public void SelectionSort(Shape[] arr) {
         for (int i = 0; i < arr.length - 1; i++) {
             int maxElementIndex = i;
-            for (int j = i + 1; j < arr.length - 1; j++) {
+            for (int j = i + 1; j < arr.length; j++) {
                 switch (type) {
                     case "h":
                         if (arr[maxElementIndex].compareTo(arr[j]) < 0)
                             maxElementIndex = j;
                         break;
-                    case "a":
-
+                    case "b":
+                        BaseAreacomp base = new BaseAreacomp();
                         if (base.compare(arr[maxElementIndex], arr[j]) < 0)
                             maxElementIndex = j;
                         break;
                     case "v":
+                        Volumecomp vol = new Volumecomp();
                         if (vol.compare(arr[maxElementIndex], arr[j]) < 0)
                             maxElementIndex = j;
                         break;
@@ -44,85 +42,42 @@ public class AllSorts {
     }
 
     public void BubbleSort(Shape[] arr) {
-        for (int i = 0; i < arr.length - 1; i++) {
-            for (int j = 1; j < (arr.length - i - 1); j++) {
-                // System.out.println(arr[j]);
-                // System.out.println(arr[j+1]);
-                switch (type) {
-                    case "h":
-                        if (arr[j].compareTo(arr[j - 1]) > 0) {
-                            Shape temp = arr[j];
-                            arr[j] = arr[j - 1];
-                            arr[j - 1] = temp;
-                            swapped = true;
-                        }
-                        break;
-                    case "a":
 
-                        if (base.compare(arr[j], arr[j - 1]) > 0) {
-                            Shape temp = arr[j];
-                            arr[j] = arr[j - 1];
-                            arr[j - 1] = temp;
-                            swapped = true;
-                        }
-                        break;
-                    case "v":
-                        if (vol.compare(arr[j], arr[j - 1]) > 0) {
-                            Shape temp = arr[j];
-                            arr[j] = arr[j - 1];
-                            arr[j - 1] = temp;
-                            swapped = true;
-                        }
-
-                        break;
-                }
-                if (swapped != true) {
-                    break;
-                }
-
-            }
-        }
     }
 
     public void InsertionSort(Shape[] arr) {
 
-        for (int i = 1; i < arr.length - 1; i++) {
+        for (int i = 0; i < arr.length; i++) {
             Shape current = arr[i];
-            int j = i - 1;
+            int j = i + 1;
             switch (type) {
                 case "h":
-                    while ((j >= 0) && (arr[j]).compareTo(current) < 0) {
-                        arr[j + 1] = arr[j];
-                        j--;
-                        swapped = true;
+                    while ((j >= 0) && (arr[j]).compareTo(current) > 0) {
+                        arr[j - 1] = arr[j];
+                        j++;
                     }
                     break;
-                case "a":
-
+                case "b":
+                    BaseAreacomp base = new BaseAreacomp();
                     while ((j >= 0) && (base.compare(arr[j], current) < 0)) {
-                        arr[j + 1] = arr[j];
-                        j--;
-                        swapped = true;
+                        arr[j - 1] = arr[j];
+                        j++;
                     }
 
                     break;
                 case "v":
+                    Volumecomp vol = new Volumecomp();
                     while ((j >= 0) && (vol.compare(arr[j], current) < 0)) {
-                        arr[j + 1] = arr[j];
-                        j--;
-                        swapped = true;
+                        arr[j - 1] = arr[j];
+                        j++;
                     }
                     break;
             }
-            arr[j + 1] = current;
-            if (swapped == false) {
-                break;
-            }
-
+            arr[j - 1] = current;
         }
     }
 
-    void Merge(Shape arr[], int left, int middle, int right) {
+    public void Merge(Shape arr[], int left, int middle, int right) {
         int low = middle - left + 1; // size of the left Subarray
         int high = right - middle; // Size of the right Subarray
 
@@ -152,8 +107,8 @@ public class AllSorts {
                         j++;
                     }
                     break;
-                case "a":
-
+                case "b":
+                    BaseAreacomp base = new BaseAreacomp();
                     if (base.compare(L[i], R[j]) < 0) {
                         arr[k] = L[i];
                         i++;
@@ -163,6 +118,7 @@ public class AllSorts {
                     }
                     break;
                 case "v":
+                    Volumecomp vol = new Volumecomp();
                     if (vol.compare(L[i], R[j]) < 0) {
                         arr[k] = L[i];
                         i++;
@@ -174,7 +130,13 @@ public class AllSorts {
                     break;
 
             }
-
+            // if (L[i] <= R[j]) {
+            // arr[k] = L[i];
+            // i++;
+            // } else {
+            // arr[k] = R[j];
+            // j++;
+            // }
             k++;
         }
         while (i < low) { // merge remaining elements from left sub arr
@@ -185,7 +147,7 @@ public class AllSorts {
 
     }
 
-    public void MergeSort(Shape arr[], int left, int right) { // helper function creates sorting sub cases
+    void MergeSort(Shape arr[], int left, int right) { // helper function creates sorting sub cases
         int middle;
         if (left < right) { // only sort if the left index is less than right
             middle = (left + right) / 2;
@@ -212,8 +174,17 @@ public class AllSorts {
      * }
      * 
      */
+    public void QuickSort(Shape[] arr) {
 
+ /*  
+    public void QuickSort(Shape arr[]) {
+        int begin = 0;
+        int end = 0;
+        if (low < high) {
 
+        }
+    }
+     */
     public void QuickSort(Shape arr[]) {
         int begin = 0;
         int end = 0;
@@ -271,47 +242,9 @@ public class AllSorts {
         arr[i + 1] = arr[end];
         arr[end] = swapTemp;
         return i + 1;
-
     }
 
     public void MySort(Shape[] arr) {
-        // int gap = arr.length;
-        // double shrink = 1.3;
-        // boolean swapped = true;
-        //
-        // while (gap != 1 || swapped == true) {
-        // gap = floor(gap / 1.3);
-        // if (gap <= 1) {
-        // gap = 1;
-        // }
-        // swapped = false;
-        //
-        // for (int i = 0; i <= arr.length + 1 - gap; i++) {
-        // switch (type) {
-        // case "h":
-        // if (arr[i].compareTo(arr[i + gap])) {
-        // int temp = arr[i];
-        // arr[i] = arr[i + gap];
-        // arr[i + gap] = temp;
-        // }
-        // break;
-        // case "a":
-        //
-        // if (base.compare(arr[maxElementIndex], arr[j]) < 0) {
-        // int temp = arr[i];
-        // arr[i] = arr[i + gap];
-        // arr[i + gap] = temp;
-        // }
-        // break;
-        // case "v":
-        // if (vol.compare(arr[maxElementIndex], arr[j]) < 0) {
-        // int temp = arr[i];
-        // arr[i] = arr[i + gap];
-        // arr[i + gap] = temp;
-        // }
-        // break;
-        // }
-        // }
-        // }
+
     }
 }
