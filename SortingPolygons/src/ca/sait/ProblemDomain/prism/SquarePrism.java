@@ -2,7 +2,11 @@ package ca.sait.ProblemDomain.prism;
 
 import ca.sait.ProblemDomain.*;
 
-public class SquarePrism extends Prism{
+public class SquarePrism extends Prism {
+    public SquarePrism(double height, double side) {
+        this.side = side;
+        this.height = height;
+    }
 
     @Override
     public double calcBaseArea() {
@@ -37,8 +41,7 @@ public class SquarePrism extends Prism{
 
     @Override
     public String toString() {
-        // TODO Auto-generated method stub
-        return super.toString();
+        return String.format("SquarePrism(side=%.3f height=%.3f)", side, height);
     }
-    
+
 }

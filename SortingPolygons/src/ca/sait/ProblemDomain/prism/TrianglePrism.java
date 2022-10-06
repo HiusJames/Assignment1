@@ -2,15 +2,20 @@ package ca.sait.ProblemDomain.prism;
 
 import ca.sait.ProblemDomain.*;
 
-public class TrianglePrism extends Prism{
+public class TrianglePrism extends Prism {
+    public TrianglePrism(double height, double side) {
+        this.side = side;
+        this.height = height;
+    }
+
     @Override
     public double calcBaseArea() {
-        return side * side * (Math.sqrt(3)/4.0);
+        return side * side * (Math.sqrt(3) / 4.0);
     }
 
     @Override
     public double calcVol() {
-        return side * side * (Math.sqrt(3)/4.0) * height;
+        return side * side * (Math.sqrt(3) / 4.0) * height;
     }
 
     @Override
@@ -36,7 +41,6 @@ public class TrianglePrism extends Prism{
 
     @Override
     public String toString() {
-        // TODO Auto-generated method stub
-        return super.toString();
+        return String.format("TrianglePrism(side=%.3f height=%.3f)", side, height);
     }
 }
