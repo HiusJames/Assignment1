@@ -20,6 +20,6 @@ public class App {
                 sort = args[i].substring(2);
             }
         }
-        sp.start("polyfor1.txt", "h", "i");
+        sp.start("polyfor1.txt", "v", "b");
     }
 }
