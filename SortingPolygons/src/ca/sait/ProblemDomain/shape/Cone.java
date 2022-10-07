@@ -5,11 +5,11 @@ import ca.sait.ProblemDomain.*;
 
 public class Cone extends Shape {
     private double radius;
-    
+
     public Cone() {
 
     }
-    
+
     public Cone(double height, double radius) {
         this.radius = radius;
         this.height = height;

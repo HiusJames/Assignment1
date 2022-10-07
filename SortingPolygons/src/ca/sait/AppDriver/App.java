@@ -1,13 +1,12 @@
 package ca.sait.AppDriver;
 
 import ca.sait.Manager.SortingPolygons;
-
+/**
+ * 
+ * @param args          Arguments from the command line 
+ * @throws Exception    Throw all Exceptions
+ */
 public class App {
-    /**
-     * 
-     * @param args
-     * @throws Exception
-     */
     public static void main(String[] args) throws Exception {
         
         String filepath = "";
@@ -34,7 +33,7 @@ public class App {
 //        System.out.println(type);
 //        System.out.println(sort);
         SortingPolygons sp = new SortingPolygons();
-        sp.start("polyfor1.txt", "a", "q");
+        sp.start("polyfor1.txt", "h", "i");
 //        sp.start(filepath, type, sort);
     }
 }

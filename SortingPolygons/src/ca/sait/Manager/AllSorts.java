@@ -3,13 +3,20 @@ package ca.sait.Manager;
 import ca.sait.ProblemDomain.*;
 
 public class AllSorts {
-    protected String type;
+	public String type;
+	private boolean swapped = false;
+	BaseAreacomp base = new BaseAreacomp();
+	Volumecomp vol = new Volumecomp();
 
-    public void AllSorts(String type) {
-        this.type = type;
-    }
+	public AllSorts(String type) {
+		this.type = type;
+	}
 
-<<<<<<< Updated upstream
+    /**
+	 * SelectionSort() - Selection Sort.
+	 *
+     * @param arr - Array that is being sorted.
+	 */
 	public void SelectionSort(Shape[] arr) {
 		for (int i = 0; i < arr.length - 1; i++) {
 			int maxElementIndex = i;
@@ -20,107 +27,34 @@ public class AllSorts {
 						maxElementIndex = j;
 					break;
 				case "a":
-=======
-    public void SelectionSort(Shape[] arr) {
-        for (int i = 0; i < arr.length - 1; i++) {
-            int maxElementIndex = i;
-            for (int j = i + 1; j < arr.length; j++) {
-                switch (type) {
-                    case "h":
-                        if (arr[maxElementIndex].compareTo(arr[j]) < 0)
-                            maxElementIndex = j;
-                        break;
-                    case "b":
-                        BaseAreacomp base = new BaseAreacomp();
-                        if (base.compare(arr[maxElementIndex], arr[j]) < 0)
-                            maxElementIndex = j;
-                        break;
-                    case "v":
-                        Volumecomp vol = new Volumecomp();
-                        if (vol.compare(arr[maxElementIndex], arr[j]) < 0)
-                            maxElementIndex = j;
-                        break;
-                }
 
-            }
+					if (base.compare(arr[maxElementIndex], arr[j]) < 0)
+						maxElementIndex = j;
+					break;
+				case "v":
+					if (vol.compare(arr[maxElementIndex], arr[j]) < 0)
+						maxElementIndex = j;
+					break;
+				}
 
-            if (maxElementIndex != i) {
-                Shape temp = arr[i];
-                arr[i] = arr[maxElementIndex];
-                arr[maxElementIndex] = temp;
-            }
-        }
+			}
+			if (maxElementIndex != i) {
+				Shape temp = arr[i];
+				arr[i] = arr[maxElementIndex];
+				arr[maxElementIndex] = temp;
+			}
+		}
 
-    }
+	}
 
-    public void BubbleSort(Shape[] arr) {
-
-    }
-
-    public void InsertionSort(Shape[] arr) {
-
-        for (int i = 0; i < arr.length; i++) {
-            Shape current = arr[i];
-            int j = i + 1;
-            switch (type) {
-                case "h":
-                    while ((j >= 0) && (arr[j]).compareTo(current) > 0) {
-                        arr[j - 1] = arr[j];
-                        j++;
-                    }
-                    break;
-                case "b":
-                    BaseAreacomp base = new BaseAreacomp();
-                    while ((j >= 0) && (base.compare(arr[j], current) < 0)) {
-                        arr[j - 1] = arr[j];
-                        j++;
-                    }
-
-                    break;
-                case "v":
-                    Volumecomp vol = new Volumecomp();
-                    while ((j >= 0) && (vol.compare(arr[j], current) < 0)) {
-                        arr[j - 1] = arr[j];
-                        j++;
-                    }
-                    break;
-            }
-            arr[j - 1] = current;
-        }
-    }
     /**
-     * 
-     * @param arr
-     * @param left
-     * @param middle
-     * @param right
-     */
-    public void Merge(Shape arr[], int left, int middle, int right) {
-        int low = middle - left + 1; // size of the left Subarray
-        int high = right - middle; // Size of the right Subarray
->>>>>>> Stashed changes
-
-        Shape[] L = new Shape[low]; // create left and right subarray
-        Shape[] R = new Shape[high];
-
-        int i = 0, j = 0;
-
-        for (i = 0; i < low; i++) { // gets elements into left subarray
-            L[i] = arr[left + 1];
-        }
-        for (j = 0; j < high; j++) { // gets elements into right subbarray
-            R[j] = arr[middle + 1 + j];
-        }
-        int k = left; // strarting index for sort
-        i = 0; // reset loop variables before merge
-        j = 0;
-
-<<<<<<< Updated upstream
+	 * BubbleSort() - Bubble Sort.
+	 *
+     * @param arr - Array that is being sorted.
+	 */
 	public void BubbleSort(Shape[] arr) {
 		for (int i = 0; i < arr.length - 1; i++) {
 			for (int j = 1; j < (arr.length - i - 1); j++) {
-//            	System.out.println(arr[j]);
-//            	System.out.println(arr[j+1]);
 				switch (type) {
 				case "h":
 					if (arr[j].compareTo(arr[j - 1]) > 0) {
@@ -130,112 +64,53 @@ public class AllSorts {
 					}
 					break;
 				case "a":
-=======
-        while (i < low && j < high) { // mergre left and right subarrays
-            switch (type) {
-                case "h":
-                    if (L[i].compareTo(R[j]) < 0) {
-                        arr[k] = L[i];
-                        i++;
-                    } else {
-                        arr[k] = R[j];
-                        j++;
-                    }
-                    break;
-                case "b":
-                    BaseAreacomp base = new BaseAreacomp();
-                    if (base.compare(L[i], R[j]) < 0) {
-                        arr[k] = L[i];
-                        i++;
-                    } else {
-                        arr[k] = R[j];
-                        j++;
-                    }
-                    break;
-                case "v":
-                    Volumecomp vol = new Volumecomp();
-                    if (vol.compare(L[i], R[j]) < 0) {
-                        arr[k] = L[i];
-                        i++;
-                    } else {
-                        arr[k] = R[j];
-                        j++;
-                    }
 
-                    break;
+					if (base.compare(arr[j], arr[j - 1]) > 0) {
+						Shape temp = arr[j];
+						arr[j] = arr[j - 1];
+						arr[j - 1] = temp;
+					}
+					break;
+				case "v":
+					if (vol.compare(arr[j], arr[j - 1]) > 0) {
+						Shape temp = arr[j];
+						arr[j] = arr[j - 1];
+						arr[j - 1] = temp;
 
-            }
-            // if (L[i] <= R[j]) {
-            // arr[k] = L[i];
-            // i++;
-            // } else {
-            // arr[k] = R[j];
-            // j++;
-            // }
-            k++;
+					}
+					break;
+				}
 
-        }
-        while (i < low) { // merge remaining elements from left sub arr
-            arr[k] = R[j];
-            j++;
-            k++;
-        }
-
-    }
-    /**
-     * 
-     * @param arr
-     * @param left
-     * @param right
-     */
-    void MergeSort(Shape arr[], int left, int right) { // helper function creates sorting sub cases
-        int middle;
-        if (left < right) { // only sort if the left index is less than right
-            middle = (left + right) / 2;
->>>>>>> Stashed changes
-
-            MergeSort(arr, left, middle); // left subarray
-            MergeSort(arr, middle + 1, right); // right subarray
-
-            Merge(arr, left, middle, right); // merge the two arrays
-        }
-    }
-
-<<<<<<< Updated upstream
 			}
 		}
 	}
+
+    /**
+	 * InsertionSort() - Insertion Sort.
+	 *
+     * @param arr - Array that is being sorted.
+	 */
 	public void InsertionSort(Shape[] arr) {
-=======
-    /*
-     * create array that displays the merge sort
-     * void display(int Shape[]) {
-     * for (int i=0; i < Shape.length; ++i){
-     * System.out.print(Shape[i] + " ");
-     * }
-     * }
-     * 
-     * public static void main(String Shape[]) {
-     * Sort ob = new Sort();
-     * ob.MergeSort(Shape, 0 Shape.length - 1)
-     * ob.display(Shape);
-     * }
-     * 
-     */
 
-    public void QuickSort(Shape arr[]) {
-        int begin = 0;
-        int end = 0;
-        if (begin < end) {
->>>>>>> Stashed changes
+		for (int i = 1; i < arr.length - 1; i++) {
+			Shape current = arr[i];
+			int j = i - 1;
+			switch (type) {
+			case "h":
+				while ((j >= 0) && (arr[j]).compareTo(current) < 0) {
+					arr[j + 1] = arr[j];
+					j--;
+					swapped = true;
+				}
+				break;
+			case "a":
 
-            int partIndex = Partition(arr, begin, end);
+				while ((j >= 0) && (base.compare(arr[j], current) < 0)) {
+					arr[j + 1] = arr[j];
+					j--;
+					swapped = true;
+				}
 
-            quickSort(arr, begin, partIndex - 1);
-            quickSort(arr, partIndex + 1, end);
-        }
-
-<<<<<<< Updated upstream
 				break;
 			case "v":
 				while ((j >= 0) && (vol.compare(arr[j], current) < 0)) {
@@ -249,90 +124,69 @@ public class AllSorts {
 			if (swapped == false) {
 				break;
 			}
+
 		}
 	}
-
+	
+    /**
+	 * Merge() - Merge for Merge Sort.
+	 *
+     * @param arr - Array that is being sorted.
+	 */
 	void Merge(Shape arr[], Shape[] left, Shape[] right, int leftlength, int rightlength) {
 		int i = 0, j = 0, k = 0;
-		while (i < leftlength && j < rightlength) { // mergre left and right subarrays
+		while (i < leftlength && j < rightlength) {
 			switch (type) {
 			case "h":
-				if (left[i].compareTo(right[j]) > 0) {
+				if (left[i].compareTo(right[j]) >= 0) {
 					arr[k++] = left[i++];
-=======
-    }
->>>>>>> Stashed changes
 
-    private int Partition(Shape arr[], begin, end) {
-        int begin = 0;
-        int end = 0;
-        Shape piv = arr[end];
-        int i = (begin - 1);
+				} else {
+					arr[k++] = right[j++];
 
-        switch (type) {
-            case "h":
-                for (int j = begin; j < end; j++) {
-                    if (arr[j].compareTo(piv) < 0) {
-                        i++;
-                        Shape swapTemp = arr[i];
-                        arr[j] = swapTemp;
-                    }
-                }
+				}
+				break;
+			case "a":
 
-                break;
-            case "b":
-                for (int j = begin; j < end; j++) {
-                    BaseAreacomp base = new BaseAreacomp();
-                    if (base.compare(arr[j], (piv)) < 0) {
-                        i++;
-                        swapTemp = arr[j];
-                        arr[j] = swapTemp;
-                    }
-                }
-                break;
-            case "v":
-                for (int j = begin; j < end; j++) {
-                    if (vol.compare(arr[j], (piv)) < 0) {
-                        Volumecomp vol = new Volumecomp();
-                        i++;
-                        Shape swapTemp = arr[i];
-                        arr[j] = swapTemp;
+				if (base.compare(left[i], right[j]) > 0) {
+					arr[k++] = left[i++];
 
-                    }
-                }
-                break;
+				} else {
+					arr[k++] = right[j++];
 
-        }
-        Shape swapTemp = arr[i + 1];
-        arr[i + 1] = arr[end];
-        arr[end] = swapTemp;
-        return i + 1;
-    }
+				}
+				break;
+			case "v":
+				if (vol.compare(left[i], right[j]) > 0) {
+					arr[k++] = left[i++];
 
-    public void MySort(Shape[] arr) {
+				} else {
+					arr[k++] = right[j++];
 
-<<<<<<< Updated upstream
 				}
 				break;
 			}
 		}
-		while (i < leftlength) { // merge remaining elements from left sub arr
+		while (i < leftlength) {
 			arr[k++] = left[i++];
 		}
-		while (j < rightlength) { // merge remaining elements from left sub arr
-			arr[k++] = left[j++];
+		while (j < rightlength) {
+			arr[k++] = right[j++];
 		}
 
 	}
 
+    /**
+	 * MergeSort() - Merge Sort.
+	 *
+     * @param arr - Array that is being sorted.
+	 */
 	public void MergeSort(Shape arr[], int n) { // helper function creates sorting sub cases
 		if (n < 2) {
 			return;
 		}
-//		System.out.println(arr[n]);
+
 		int middle = n / 2;
-		System.out.println(middle);
-		System.out.println(arr[middle]);
 		Shape[] l = new Shape[middle];
 		Shape[] r = new Shape[n - middle];
 		for (int i = 0; i < middle; i++) {
@@ -341,20 +195,18 @@ public class AllSorts {
 		for (int i = middle; i < n; i++) {
 			r[i - middle] = arr[i];
 		}
-
+		System.out.println("here is run left " + l.length);
+		System.out.println("here is run right  " + r.length);
 		MergeSort(l, middle); // left subarray
 		MergeSort(r, n - middle); // right subarray
 
 		Merge(arr, l, r, middle, n - middle); // merge the two arrays
 	}
 
-	/*
-	 * create array that displays the merge sort void display(int Shape[]) { for
-	 * (int i=0; i < Shape.length; ++i){ System.out.print(Shape[i] + " "); } }
-	 * 
-	 * public static void main(String Shape[]) { Sort ob = new Sort();
-	 * ob.MergeSort(Shape, 0 Shape.length - 1) ob.display(Shape); }
-	 * 
+    /**
+	 * QuickSort() - Quick Sort.
+	 *
+     * @param arr - Array that is being sorted.
 	 */
 	public void QuickSort(Shape[] arr, int begin, int end) {
 		if (begin < end) {
@@ -366,6 +218,11 @@ public class AllSorts {
 
 	}
 
+    /**
+	 * Partition() - Partition for Quick Sort.
+	 *
+     * @param arr - Array that is being sorted.
+	 */
 	private int Partition(Shape arr[], int begin, int end) {
 		Shape piv = arr[end];
 		int i = (begin - 1);
@@ -411,6 +268,11 @@ public class AllSorts {
 		return i + 1;
 	}
 
+    /**
+	 * MySort() - Our Sort.
+	 *
+     * @param arr - Array that is being sorted.
+	 */
 	public void MySort(Shape[] arr) {
 		int gap = arr.length;
 		boolean swapped = true;
@@ -450,7 +312,4 @@ public class AllSorts {
 			}
 		}
 	}
-=======
-    }
->>>>>>> Stashed changes
 }

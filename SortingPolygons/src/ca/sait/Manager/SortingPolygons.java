@@ -6,12 +6,11 @@ import ca.sait.ProblemDomain.prism.*;
 
 import java.io.*;
 import java.util.*;
-
 public class SortingPolygons {
 	String filepath;
 	String type;
 	String sort;
-	static Shape[] shapes;
+	Shape[] shapes;
 
 	public void start(String filepath, String type, String sort) throws IOException {
 		this.filepath = filepath;
@@ -20,11 +19,9 @@ public class SortingPolygons {
 		System.out.println("Application started");
 		long startTime = System.currentTimeMillis();
 		LoadPolygons();
-//        for (int i = 0; i <shapes.length; i++) {}
-//        System.out.println(shapes[i].compareTo(shapes[i+1]));
 		SortPolygons();
 		long endTime = System.currentTimeMillis();
-		System.out.println("Processed time: " + (endTime - startTime));
+		System.out.println("Processed time: " + (endTime - startTime) + "ms");
 	}
 
 	public void LoadPolygons() throws IOException {
@@ -34,7 +31,7 @@ public class SortingPolygons {
 		String[] fields = line.split(" ");
 		int amount = Integer.parseInt(fields[0]);
 		shapes = new Shape[amount];
-		for (int i = 1; i < amount; i++) {
+		for (int i = 1; i <= amount; i++) {
 			String name = fields[3 * i - 2];
 			switch (name) {
 			case "Cylinder":
@@ -64,7 +61,6 @@ public class SortingPolygons {
 						Double.parseDouble(fields[3 * i])));
 				break;
 			}
-
 		}
 	}
 
