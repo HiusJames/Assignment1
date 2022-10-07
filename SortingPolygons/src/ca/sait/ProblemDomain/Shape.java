@@ -1,5 +1,11 @@
 package ca.sait.ProblemDomain;
 
+/*
+ * Abstract class that compares shape
+ * 
+ * Calls the base area for the CalcBaseArea 
+ * 
+ */
 public abstract class Shape implements Comparable<Shape> {
     protected double height;
 

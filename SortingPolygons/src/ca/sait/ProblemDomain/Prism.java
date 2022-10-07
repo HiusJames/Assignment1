@@ -1,5 +1,13 @@
 package ca.sait.ProblemDomain;
 
+/*
+
+ * Abstract class for prism
+ * 
+ * getSide() - get the prism side 
+ * setSide() - set the side of the prism
+ * 
+ */
 public abstract class Prism extends Shape {
     protected double side;
 
