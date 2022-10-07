@@ -4,22 +4,32 @@ import ca.sait.Manager.SortingPolygons;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        SortingPolygons sp = new SortingPolygons();
+        
         String filepath = "";
         String type = "";
         String sort = "";
 
         for (int i = 0; i < args.length; i++) {
-            if (args[i].startsWith("-f")) {
-                filepath = args[i].substring(2);
+        	String currentText = args[i].toLowerCase();
+            if (currentText.startsWith("-f")) {
+                filepath = currentText.substring(2);
             }
-            if (args[i].startsWith("-t")) {
-                type = args[i].substring(2);
+            if (currentText.startsWith("-t")) {
+                type = currentText.substring(2);
             }
-            if (args[i].startsWith("-s")) {
-                sort = args[i].substring(2);
+            if (currentText.startsWith("-s")) {
+                sort = currentText.substring(2);
             }
         }
-        sp.start("polyfor1.txt", "v", "b");
+        // do some data check
+        // for test
+        System.out.println("here is run");
+
+//        System.out.println(filepath);
+//        System.out.println(type);
+//        System.out.println(sort);
+        SortingPolygons sp = new SortingPolygons();
+        sp.start("polyfor1.txt", "a", "q");
+//        sp.start(filepath, type, sort);
     }
 }
