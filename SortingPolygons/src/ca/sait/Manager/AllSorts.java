@@ -12,6 +12,11 @@ public class AllSorts {
 		this.type = type;
 	}
 
+    /**
+	 * SelectionSort() - Selection Sort.
+	 *
+     * @param arr - Array that is being sorted.
+	 */
 	public void SelectionSort(Shape[] arr) {
 		for (int i = 0; i < arr.length - 1; i++) {
 			int maxElementIndex = i;
@@ -42,11 +47,14 @@ public class AllSorts {
 
 	}
 
+    /**
+	 * BubbleSort() - Bubble Sort.
+	 *
+     * @param arr - Array that is being sorted.
+	 */
 	public void BubbleSort(Shape[] arr) {
 		for (int i = 0; i < arr.length - 1; i++) {
 			for (int j = 1; j < (arr.length - i - 1); j++) {
-//            	System.out.println(arr[j]);
-//            	System.out.println(arr[j+1]);
 				switch (type) {
 				case "h":
 					if (arr[j].compareTo(arr[j - 1]) > 0) {
@@ -76,6 +84,12 @@ public class AllSorts {
 			}
 		}
 	}
+
+    /**
+	 * InsertionSort() - Insertion Sort.
+	 *
+     * @param arr - Array that is being sorted.
+	 */
 	public void InsertionSort(Shape[] arr) {
 
 		for (int i = 1; i < arr.length - 1; i++) {
@@ -113,10 +127,14 @@ public class AllSorts {
 		}
 	}
 	
-
+    /**
+	 * Merge() - Merge for Merge Sort.
+	 *
+     * @param arr - Array that is being sorted.
+	 */
 	void Merge(Shape arr[], Shape[] left, Shape[] right, int leftlength, int rightlength) {
 		int i = 0, j = 0, k = 0;
-		while (i < leftlength && j < rightlength) { // mergre left and right subarrays
+		while (i < leftlength && j < rightlength) {
 			switch (type) {
 			case "h":
 				if (left[i].compareTo(right[j]) >= 0) {
@@ -148,23 +166,26 @@ public class AllSorts {
 				break;
 			}
 		}
-		while (i < leftlength) { // merge remaining elements from left sub arr
+		while (i < leftlength) {
 			arr[k++] = left[i++];
 		}
-		while (j < rightlength) { // merge remaining elements from left sub arr
+		while (j < rightlength) {
 			arr[k++] = right[j++];
 		}
 
 	}
 
+    /**
+	 * MergeSort() - Merge Sort.
+	 *
+     * @param arr - Array that is being sorted.
+	 */
 	public void MergeSort(Shape arr[], int n) { // helper function creates sorting sub cases
 		if (n < 2) {
 			return;
 		}
-//		System.out.println(arr[n]);
+
 		int middle = n / 2;
-//		System.out.println(middle);
-//		System.out.println(arr[middle]);
 		Shape[] l = new Shape[middle];
 		Shape[] r = new Shape[n - middle];
 		for (int i = 0; i < middle; i++) {
@@ -181,7 +202,11 @@ public class AllSorts {
 		Merge(arr, l, r, middle, n - middle); // merge the two arrays
 	}
 
-	
+    /**
+	 * QuickSort() - Quick Sort.
+	 *
+     * @param arr - Array that is being sorted.
+	 */
 	public void QuickSort(Shape[] arr, int begin, int end) {
 		if (begin < end) {
 			int partIndex = Partition(arr, begin, end);
@@ -192,6 +217,11 @@ public class AllSorts {
 
 	}
 
+    /**
+	 * Partition() - Partition for Quick Sort.
+	 *
+     * @param arr - Array that is being sorted.
+	 */
 	private int Partition(Shape arr[], int begin, int end) {
 		Shape piv = arr[end];
 		int i = (begin - 1);
@@ -237,6 +267,11 @@ public class AllSorts {
 		return i + 1;
 	}
 
+    /**
+	 * MySort() - Our Sort.
+	 *
+     * @param arr - Array that is being sorted.
+	 */
 	public void MySort(Shape[] arr) {
 		int gap = arr.length;
 		boolean swapped = true;
