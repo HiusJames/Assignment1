@@ -117,13 +117,14 @@ public class AllSorts {
 
 		}
 	}
+	
 
 	void Merge(Shape arr[], Shape[] left, Shape[] right, int leftlength, int rightlength) {
 		int i = 0, j = 0, k = 0;
 		while (i < leftlength && j < rightlength) { // mergre left and right subarrays
 			switch (type) {
 			case "h":
-				if (left[i].compareTo(right[j]) > 0) {
+				if (left[i].compareTo(right[j]) >= 0) {
 					arr[k++] = left[i++];
 
 				} else {
@@ -156,7 +157,7 @@ public class AllSorts {
 			arr[k++] = left[i++];
 		}
 		while (j < rightlength) { // merge remaining elements from left sub arr
-			arr[k++] = left[j++];
+			arr[k++] = right[j++];
 		}
 
 	}
@@ -167,8 +168,8 @@ public class AllSorts {
 		}
 //		System.out.println(arr[n]);
 		int middle = n / 2;
-		System.out.println(middle);
-		System.out.println(arr[middle]);
+//		System.out.println(middle);
+//		System.out.println(arr[middle]);
 		Shape[] l = new Shape[middle];
 		Shape[] r = new Shape[n - middle];
 		for (int i = 0; i < middle; i++) {
@@ -177,21 +178,15 @@ public class AllSorts {
 		for (int i = middle; i < n; i++) {
 			r[i - middle] = arr[i];
 		}
-
+		System.out.println("here is run left " + l.length);
+		System.out.println("here is run right  " + r.length);
 		MergeSort(l, middle); // left subarray
 		MergeSort(r, n - middle); // right subarray
 
 		Merge(arr, l, r, middle, n - middle); // merge the two arrays
 	}
 
-	/*
-	 * create array that displays the merge sort void display(int Shape[]) { for
-	 * (int i=0; i < Shape.length; ++i){ System.out.print(Shape[i] + " "); } }
-	 * 
-	 * public static void main(String Shape[]) { Sort ob = new Sort();
-	 * ob.MergeSort(Shape, 0 Shape.length - 1) ob.display(Shape); }
-	 * 
-	 */
+	
 	public void QuickSort(Shape[] arr, int begin, int end) {
 		if (begin < end) {
 			int partIndex = Partition(arr, begin, end);

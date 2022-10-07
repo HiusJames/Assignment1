@@ -29,7 +29,7 @@ public class App {
 //        System.out.println(type);
 //        System.out.println(sort);
         SortingPolygons sp = new SortingPolygons();
-        sp.start("polyfor1.txt", "a", "q");
+        sp.start("polyfor1.txt", "h", "i");
 //        sp.start(filepath, type, sort);
     }
 }
