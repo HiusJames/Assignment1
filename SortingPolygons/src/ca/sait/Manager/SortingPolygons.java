@@ -13,6 +13,14 @@ public class SortingPolygons {
 	String sort;
 	Shape[] shapes;
 
+    /**
+	 * start() - Initializes filepath, type, and sort. Starts timer then loads the polygons and sorts them.
+	 *
+	 * @throws IOException - Thrown when the file could not be accessed.
+     * @param filepath - Initializes which .txt is being sorted.
+     * @param type - Initializes the area that gets sorted (height, basearea, volume).
+     * @param sort - Initializes the type of sort used.
+	 */
 	public void start(String filepath, String type, String sort) throws IOException {
 		this.filepath = filepath;
 		this.type = type;
@@ -20,16 +28,18 @@ public class SortingPolygons {
 		System.out.println("Application started");
 		long startTime = System.currentTimeMillis();
 		LoadPolygons();
-//        for (int i = 0; i <shapes.length; i++) {}
-//        System.out.println(shapes[i].compareTo(shapes[i+1]));
 		SortPolygons();
 		long endTime = System.currentTimeMillis();
 		System.out.println("Processed time: " + (endTime - startTime) + "ms");
 	}
 
+    /**
+	 * LoadPolygons() - Takes the shapes in a filepath and insert values into Shape object
+	 *
+	 * @throws IOException - Thrown when the file could not be accessed.
+	 */
 	public void LoadPolygons() throws IOException {
 		Scanner in = new Scanner(new File("res//" + filepath));
-
 		String line = in.nextLine();
 		String[] fields = line.split(" ");
 		int amount = Integer.parseInt(fields[0]);
@@ -67,6 +77,9 @@ public class SortingPolygons {
 		}
 	}
 
+    /**
+	 * SortPolygons() - Decide sort, type, and prints the first 1000 Shapes.
+	 */
 	public void SortPolygons() {
 		AllSorts sorts = new AllSorts(type);
 		System.out.print("Sort method: ");
