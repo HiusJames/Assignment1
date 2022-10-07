@@ -3,6 +3,11 @@ package ca.sait.AppDriver;
 import ca.sait.Manager.SortingPolygons;
 
 public class App {
+    /**
+     * 
+     * @param args
+     * @throws Exception
+     */
     public static void main(String[] args) throws Exception {
         
         String filepath = "";
