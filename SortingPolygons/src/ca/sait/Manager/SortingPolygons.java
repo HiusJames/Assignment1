@@ -12,6 +12,14 @@ public class SortingPolygons {
 	String sort;
 	Shape[] shapes;
 
+	/**
+	 * start() - Start the program
+	 * 
+	 * @param filepath			the path to the file
+	 * @param type				the type of the sort
+	 * @param sort				the sort method
+	 * @throws IOException
+	 */
 	public void start(String filepath, String type, String sort) throws IOException {
 		this.filepath = filepath;
 		this.type = type;
@@ -24,6 +32,10 @@ public class SortingPolygons {
 		System.out.println("Processed time: " + (endTime - startTime) + "ms");
 	}
 
+	/**
+	 * LoadPolygons() - Load the shape array with datas from the file
+	 * @throws IOException
+	 */
 	public void LoadPolygons() throws IOException {
 		Scanner in = new Scanner(new File("res//" + filepath));
 
@@ -63,7 +75,9 @@ public class SortingPolygons {
 			}
 		}
 	}
-
+	/**
+	 * SortPolygons() - Sort the shape array based on the sorting type and method
+	 */
 	public void SortPolygons() {
 		AllSorts sorts = new AllSorts(type);
 		System.out.print("Sort method: ");

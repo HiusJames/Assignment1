@@ -8,15 +8,17 @@ public class AllSorts {
 	BaseAreacomp base = new BaseAreacomp();
 	Volumecomp vol = new Volumecomp();
 
+	/**
+	 * Constructor for AllSorts
+	 */
 	public AllSorts(String type) {
 		this.type = type;
 	}
-
-    /**
-	 * SelectionSort() - Selection Sort.
-	 *
-     * @param arr - Array that is being sorted.
-	 */
+	/**
+     * SelectionSort() - Selection Sort.
+     *
+     * @param arr		the array being sorted
+     */
 	public void SelectionSort(Shape[] arr) {
 		for (int i = 0; i < arr.length - 1; i++) {
 			int maxElementIndex = i;
@@ -38,6 +40,7 @@ public class AllSorts {
 				}
 
 			}
+
 			if (maxElementIndex != i) {
 				Shape temp = arr[i];
 				arr[i] = arr[maxElementIndex];
@@ -46,11 +49,10 @@ public class AllSorts {
 		}
 
 	}
-
-    /**
-	 * BubbleSort() - Bubble Sort.
-	 *
-     * @param arr - Array that is being sorted.
+	/**
+	 * BubbleSort() - Bubble Sort
+	 * 
+	 * @param arr		the array being sorted
 	 */
 	public void BubbleSort(Shape[] arr) {
 		for (int i = 0; i < arr.length - 1; i++) {
@@ -69,6 +71,7 @@ public class AllSorts {
 						Shape temp = arr[j];
 						arr[j] = arr[j - 1];
 						arr[j - 1] = temp;
+
 					}
 					break;
 				case "v":
@@ -78,17 +81,17 @@ public class AllSorts {
 						arr[j - 1] = temp;
 
 					}
+
 					break;
 				}
 
 			}
 		}
 	}
-
-    /**
-	 * InsertionSort() - Insertion Sort.
-	 *
-     * @param arr - Array that is being sorted.
+	/**
+	 * InserrtionSort() - Insertion Sort
+	 * 
+	 * @param arr		the array being sorted
 	 */
 	public void InsertionSort(Shape[] arr) {
 
@@ -128,12 +131,16 @@ public class AllSorts {
 		}
 	}
 	
-    /**
-	 * Merge() - Merge for Merge Sort.
-	 *
-     * @param arr - Array that is being sorted.
+	/**
+	 * Merge() - Merge function of Merge Sort
+	 * 
+	 * @param arr			the array being sorted
+	 * @param left    	    the left subarray
+	 * @param right		    the right subarray
+	 * @param leftlength	the length of the left subarray
+	 * @param rightlength	the length of the right subarray
 	 */
-	void Merge(Shape arr[], Shape[] left, Shape[] right, int leftlength, int rightlength) {
+	private void Merge(Shape arr[], Shape[] left, Shape[] right, int leftlength, int rightlength) {
 		int i = 0, j = 0, k = 0;
 		while (i < leftlength && j < rightlength) {
 			switch (type) {
@@ -175,17 +182,16 @@ public class AllSorts {
 		}
 
 	}
-
-    /**
-	 * MergeSort() - Merge Sort.
-	 *
-     * @param arr - Array that is being sorted.
+	/**
+	 * MergeSort() - Merge Sort
+	 * 
+	 * @param arr		the array being sorted
+	 * @param n			the length of the array
 	 */
-	public void MergeSort(Shape arr[], int n) { // helper function creates sorting sub cases
+	public void MergeSort(Shape arr[], int n) {
 		if (n < 2) {
 			return;
 		}
-
 		int middle = n / 2;
 		Shape[] l = new Shape[middle];
 		Shape[] r = new Shape[n - middle];
@@ -197,16 +203,18 @@ public class AllSorts {
 		}
 		System.out.println("here is run left " + l.length);
 		System.out.println("here is run right  " + r.length);
-		MergeSort(l, middle); // left subarray
-		MergeSort(r, n - middle); // right subarray
+		MergeSort(l, middle);
+		MergeSort(r, n - middle);
 
-		Merge(arr, l, r, middle, n - middle); // merge the two arrays
+		Merge(arr, l, r, middle, n - middle);
 	}
 
-    /**
-	 * QuickSort() - Quick Sort.
-	 *
-     * @param arr - Array that is being sorted.
+	/**
+	 * QuickSort() - Quick Sort
+	 * 
+	 * @param arr			the array being sorted
+	 * @param begin			the first index of the array
+	 * @param end			the last index of the array
 	 */
 	public void QuickSort(Shape[] arr, int begin, int end) {
 		if (begin < end) {
@@ -217,11 +225,14 @@ public class AllSorts {
 		}
 
 	}
-
-    /**
-	 * Partition() - Partition for Quick Sort.
-	 *
-     * @param arr - Array that is being sorted.
+	/**
+	 * Patition() - Function of Quick Sort
+	 * 
+	 * @param arr		the array being sorted
+	 * @param begin		the first index of the array
+	 * @param end		the last index of the array
+	 * 
+	 * @return 			the index of the partition element
 	 */
 	private int Partition(Shape arr[], int begin, int end) {
 		Shape piv = arr[end];
@@ -267,11 +278,10 @@ public class AllSorts {
 		arr[end] = temp;
 		return i + 1;
 	}
-
-    /**
-	 * MySort() - Our Sort.
-	 *
-     * @param arr - Array that is being sorted.
+	/**
+	 * MySort() - Comb Sort
+	 * 
+	 * @param arr		the array being sorted
 	 */
 	public void MySort(Shape[] arr) {
 		int gap = arr.length;
